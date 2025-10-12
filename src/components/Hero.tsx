@@ -1,4 +1,4 @@
-import { Sparkles, Heart } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 export const Hero = () => {
   return (
@@ -14,7 +14,7 @@ export const Hero = () => {
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto animate-fade-in-up">
         <div className="flex items-center justify-center gap-3 mb-6 animate-scale-in">
           <Sparkles className="w-8 h-8 text-secondary animate-float" />
-          <Heart className="w-10 h-10 text-accent animate-float" style={{ animationDelay: "0.5s" }} />
+          <span className="text-5xl animate-float" style={{ animationDelay: "0.5s" }}>🎈</span>
           <Sparkles className="w-8 h-8 text-primary animate-float" style={{ animationDelay: "1s" }} />
         </div>
         

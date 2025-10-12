@@ -1,4 +1,4 @@
-import { Cake, Gift, Sparkles, Heart } from "lucide-react";
+import { Cake, Gift, Sparkles, PartyPopper } from "lucide-react";
 
 export const BirthdayWishes = () => {
   const wishes = [
@@ -18,7 +18,7 @@ export const BirthdayWishes = () => {
       message: "Wishing you a year filled with magic and wonder!",
     },
     {
-      icon: Heart,
+      icon: PartyPopper,
       title: "True Friendship",
       message: "Grateful for your friendship every single day!",
     },
