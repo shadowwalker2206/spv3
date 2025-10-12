@@ -8,78 +8,78 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Sunset Romance Theme - Warm, Elegant, Celebratory */
-    --background: 280 30% 97%;
-    --foreground: 280 20% 15%;
+    /* Purple Celebration Theme - Vibrant, Magical, Joyful */
+    --background: 250 25% 97%;
+    --foreground: 270 20% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 280 20% 15%;
+    --card-foreground: 270 20% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 280 20% 15%;
+    --popover-foreground: 270 20% 15%;
 
-    /* Deep purple - sophisticated and celebratory */
-    --primary: 280 65% 45%;
+    /* Vibrant blue-purple - from #667eea */
+    --primary: 228 76% 66%;
     --primary-foreground: 0 0% 100%;
 
-    /* Warm gold accent */
-    --secondary: 40 85% 65%;
-    --secondary-foreground: 280 20% 15%;
+    /* Deep purple - from #764ba2 */
+    --secondary: 270 37% 46%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 280 20% 92%;
-    --muted-foreground: 280 15% 45%;
+    --muted: 250 20% 92%;
+    --muted-foreground: 250 15% 45%;
 
-    /* Coral pink accent */
-    --accent: 350 75% 70%;
-    --accent-foreground: 0 0% 100%;
+    /* Pink-purple accent - from #f093fb */
+    --accent: 294 93% 78%;
+    --accent-foreground: 270 20% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 280 20% 88%;
-    --input: 280 20% 88%;
-    --ring: 280 65% 45%;
+    --border: 250 20% 88%;
+    --input: 250 20% 88%;
+    --ring: 228 76% 66%;
 
     --radius: 1rem;
 
-    /* Custom gradient colors */
-    --gradient-start: 280 65% 45%;
-    --gradient-mid: 320 70% 55%;
-    --gradient-end: 40 85% 65%;
+    /* Custom gradient colors - Purple gradient theme */
+    --gradient-start: 228 76% 66%;
+    --gradient-mid: 270 37% 46%;
+    --gradient-end: 294 93% 78%;
     
     /* Glow effects */
-    --glow-primary: 280 65% 45%;
-    --glow-accent: 350 75% 70%;
+    --glow-primary: 228 76% 66%;
+    --glow-accent: 294 93% 78%;
   }
 
   .dark {
-    --background: 280 30% 8%;
-    --foreground: 280 10% 95%;
+    --background: 250 30% 8%;
+    --foreground: 250 10% 95%;
 
-    --card: 280 25% 12%;
-    --card-foreground: 280 10% 95%;
+    --card: 250 25% 12%;
+    --card-foreground: 250 10% 95%;
 
-    --popover: 280 25% 12%;
-    --popover-foreground: 280 10% 95%;
+    --popover: 250 25% 12%;
+    --popover-foreground: 250 10% 95%;
 
-    --primary: 280 65% 55%;
+    --primary: 228 76% 66%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 40 75% 60%;
-    --secondary-foreground: 280 20% 15%;
+    --secondary: 270 37% 56%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 280 20% 18%;
-    --muted-foreground: 280 10% 65%;
+    --muted: 250 20% 18%;
+    --muted-foreground: 250 10% 65%;
 
-    --accent: 350 70% 65%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 294 88% 72%;
+    --accent-foreground: 270 20% 15%;
 
     --destructive: 0 62.8% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 280 20% 20%;
-    --input: 280 20% 20%;
-    --ring: 280 65% 55%;
+    --border: 250 20% 20%;
+    --input: 250 20% 20%;
+    --ring: 228 76% 66%;
   }
 }
 
