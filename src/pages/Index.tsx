@@ -52,9 +52,6 @@ const Index = () => {
       {/* Footer */}
       <footer className="py-16 text-center bg-gradient-to-t from-primary/5 to-transparent">
         <div className="space-y-4">
-          <p className="text-3xl md:text-4xl font-vibes bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
-            Made with love for Khushi 🎈
-          </p>
           <p className="text-lg font-poppins text-muted-foreground">
             Happy Birthday! May this year be your best one yet! 🎉
           </p>
