@@ -23,7 +23,7 @@ export const Hero = () => {
         </h1>
         
         <h2 className="text-5xl md:text-7xl font-playfair font-bold text-foreground mb-8">
-          Khushi Singh
+          Khushi
         </h2>
         
         <div className="max-w-2xl mx-auto bg-card/80 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-border animate-scale-in" style={{ animationDelay: "0.3s" }}>

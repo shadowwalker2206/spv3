@@ -1,40 +1,56 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Play, X } from "lucide-react";
 import { Button } from "./ui/button";
 
 interface Video {
   src: string;
   title: string;
-  thumbnail?: string;
+  thumbnail: string;
 }
 
-// Placeholder videos - user will replace with their own videos
 const videos: Video[] = [
-  { src: "/videos/video1.mp4", title: "Special Moment 1" },
-  { src: "/videos/video2.mp4", title: "Special Moment 2" },
-  { src: "/videos/video3.mp4", title: "Special Moment 3" },
+  { src: "/v1.mp4", title: "Special Moment 1", thumbnail: "/v1.jpg" },
+  { src: "/v2.mp4", title: "Special Moment 2", thumbnail: "/v2.jpg" },
+  { src: "/v3.mp4", title: "Special Moment 3", thumbnail: "/v3.jpg" },
+  { src: "/v4.mp4", title: "Special Moment 4", thumbnail: "/v4.jpg" },
+  { src: "/v5.mp4", title: "Special Moment 5", thumbnail: "/v5.jpg" },
+  { src: "/v6.mp4", title: "Special Moment 6", thumbnail: "/v6.jpg" },
+  { src: "/v7.mp4", title: "Special Moment 7", thumbnail: "/v7.jpg" },
+  { src: "/v8.mp4", title: "Special Moment 8", thumbnail: "/v8.jpg" },
+  { src: "/v9.mp4", title: "Special Moment 9", thumbnail: "/v9.jpg" },
+  { src: "/v10.mp4", title: "Special Moment 10", thumbnail: "/v10.jpg" },
+  { src: "/v11.mp4", title: "Special Moment 11", thumbnail: "/v11.jpg" },
+  { src: "/v12.mp4", title: "Special Moment 12", thumbnail: "/v12.jpg" },
 ];
 
 export const VideoGallery = () => {
   const [selectedVideo, setSelectedVideo] = useState<number | null>(null);
 
   return (
-    <>
+    <React.Fragment>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
         {videos.map((video, index) => (
           <div
             key={index}
-            className="group relative aspect-video overflow-hidden rounded-2xl cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl bg-muted animate-scale-in"
+            className="group relative aspect-video overflow-hidden rounded-2xl cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl bg-black animate-scale-in"
             style={{ animationDelay: `${index * 0.1}s` }}
             onClick={() => setSelectedVideo(index)}
           >
-            {/* Thumbnail - will show video poster or placeholder */}
-            <div className="w-full h-full bg-gradient-to-br from-primary/20 via-accent/20 to-secondary/20 flex items-center justify-center">
-              <Play className="w-16 h-16 text-white drop-shadow-lg transform transition-transform group-hover:scale-110" />
+            {/* Thumbnail Image - FIX APPLIED HERE */}
+            <img
+              src={video.thumbnail}
+              alt={video.title}
+              className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110" // Changed to object-contain
+              loading="lazy"
+            />
+
+            {/* Play Icon Overlay */}
+            <div className="absolute inset-0 bg-black/30 flex items-center justify-center transition-colors duration-300 group-hover:bg-black/50">
+              <Play className="w-16 h-16 text-white/80 drop-shadow-lg transform transition-transform group-hover:scale-110" />
             </div>
 
             {/* Title Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div className="absolute bottom-4 left-4 right-4">
                 <p className="text-white font-poppins font-semibold text-lg">
                   {video.title}
@@ -51,7 +67,7 @@ export const VideoGallery = () => {
           className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center animate-fade-in-up"
           onClick={() => setSelectedVideo(null)}
         >
-          {/* Close Button - Top Right */}
+          {/* Close Button */}
           <Button
             variant="ghost"
             size="icon"
@@ -65,12 +81,15 @@ export const VideoGallery = () => {
           </Button>
 
           {/* Video Player */}
-          <div className="max-w-6xl w-full px-4" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="max-w-6xl w-full px-4"
+            onClick={(e) => e.stopPropagation()}
+          >
             <video
               src={videos[selectedVideo].src}
               controls
               autoPlay
-              className="w-full rounded-xl shadow-2xl"
+              className="w-full rounded-xl shadow-2xl max-h-[85vh]"
             >
               Your browser does not support the video tag.
             </video>
@@ -80,6 +99,6 @@ export const VideoGallery = () => {
           </div>
         </div>
       )}
-    </>
+    </React.Fragment>
   );
 };

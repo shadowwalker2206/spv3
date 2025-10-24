@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
 
@@ -7,18 +7,26 @@ interface Photo {
   title: string;
 }
 
-// Placeholder photos - user will replace with their own
+// 1. Corrected image paths
 const photos: Photo[] = [
-  { src: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=800", title: "Memory 1" },
-  { src: "https://images.unsplash.com/photo-1511988617509-a57c8a288659?w=800", title: "Memory 2" },
-  { src: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800", title: "Memory 3" },
-  { src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800", title: "Memory 4" },
-  { src: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800", title: "Memory 5" },
-  { src: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=800", title: "Memory 6" },
+  { src: "/m1.jpg", title: "Memory 1" },
+  { src: "/m2.jpg", title: "Memory 2" },
+  { src: "/m3.jpg", title: "Memory 3" },
+  { src: "/m4.jpg", title: "Memory 4" },
+  { src: "/m5.jpg", title: "Memory 5" },
+  { src: "/m6.jpg", title: "Memory 6" },
+  { src: "/m7.jpg", title: "Memory 7" },
+  { src: "/m8.jpg", title: "Memory 8" },
+  { src: "/m9.jpg", title: "Memory 9" },
+  { src: "/m10.jpg", title: "Memory 10" },
+  { src: "/m11.jpg", title: "Memory 11" },
+  { src: "/m12.jpg", title: "Memory 12" },
+  { src: "/m13.jpg", title: "Memory 13" },
 ];
 
 export const PhotoGallery = () => {
   const [selectedPhoto, setSelectedPhoto] = useState<number | null>(null);
+  const modalRef = useRef<HTMLDivElement>(null); // Ref for the modal
 
   const handlePrevious = () => {
     if (selectedPhoto !== null && selectedPhoto > 0) {
@@ -32,13 +40,26 @@ export const PhotoGallery = () => {
     }
   };
 
-  const handleKeyDown = (e: KeyboardEvent) => {
-    if (selectedPhoto === null) return;
-    
-    if (e.key === "Escape") setSelectedPhoto(null);
-    if (e.key === "ArrowLeft") handlePrevious();
-    if (e.key === "ArrowRight") handleNext();
-  };
+  // 4. Improved keyboard event handling
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (selectedPhoto === null) return;
+      if (e.key === "Escape") setSelectedPhoto(null);
+      if (e.key === "ArrowLeft") handlePrevious();
+      if (e.key === "ArrowRight") handleNext();
+    };
+
+    if (selectedPhoto !== null) {
+      // Focus the modal when it opens
+      modalRef.current?.focus();
+      window.addEventListener("keydown", handleKeyDown);
+    }
+
+    // Cleanup listener
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedPhoto]);
 
   return (
     <>
@@ -46,14 +67,15 @@ export const PhotoGallery = () => {
         {photos.map((photo, index) => (
           <div
             key={index}
-            className="group relative aspect-square overflow-hidden rounded-2xl cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-scale-in"
+            // 2. Fixed grid cropping
+            className="group relative aspect-square overflow-hidden rounded-2xl cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl animate-scale-in bg-black/5"
             style={{ animationDelay: `${index * 0.1}s` }}
             onClick={() => setSelectedPhoto(index)}
           >
             <img
               src={photo.src}
               alt={photo.title}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110" // Changed to object-contain
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div className="absolute bottom-4 left-4 right-4">
@@ -67,11 +89,12 @@ export const PhotoGallery = () => {
       {/* Full Screen Preview Modal */}
       {selectedPhoto !== null && (
         <div
-          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center animate-fade-in-up"
+          ref={modalRef}
+          tabIndex={-1} // Make the div focusable
+          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center animate-fade-in-up outline-none"
           onClick={() => setSelectedPhoto(null)}
-          onKeyDown={(e: any) => handleKeyDown(e)}
         >
-          {/* Close Button - Top Right */}
+          {/* Close Button */}
           <Button
             variant="ghost"
             size="icon"
@@ -114,12 +137,12 @@ export const PhotoGallery = () => {
             </Button>
           )}
 
-          {/* Image */}
-          <div className="max-w-7xl max-h-[90vh] p-4" onClick={(e) => e.stopPropagation()}>
+          {/* Image Container */}
+          <div className="relative max-w-4xl w-full max-h-[90vh] p-4" onClick={(e) => e.stopPropagation()}>
             <img
               src={photos[selectedPhoto].src}
               alt={photos[selectedPhoto].title}
-              className="max-w-full max-h-full object-contain rounded-xl shadow-2xl"
+              className="w-full h-auto max-h-[85vh] object-contain rounded-lg"
             />
             <p className="text-white text-center mt-4 text-xl font-poppins">
               {photos[selectedPhoto].title}

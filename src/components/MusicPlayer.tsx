@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Play, Pause, SkipBack, SkipForward, Volume2 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Slider } from "./ui/slider";
@@ -11,45 +11,102 @@ interface Song {
 
 // Placeholder songs - user will replace with their favorite songs
 const playlist: Song[] = [
-  { title: "Song 1", artist: "Artist 1", src: "/music/song1.mp3" },
-  { title: "Song 2", artist: "Artist 2", src: "/music/song2.mp3" },
-  { title: "Song 3", artist: "Artist 3", src: "/music/song3.mp3" },
+  { title: "Sahiba", artist: "Aditya Rikhari", src: "/Sahiba.mp3" },
+  { title: "Tum ho toh", artist: "Vishal Mishra", src: "/tum ho toh.mp3" },
+  { title: "Preet Re", artist: "Darshan Raval", src: "/preet re.mp3" },
 ];
 
 export const MusicPlayer = () => {
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState([70]);
-  const audioRef = useRef<HTMLAudioElement>(null);
+  const [progress, setProgress] = useState([0]); // progress in %
+  const [duration, setDuration] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
 
+  const audioRef = useRef<HTMLAudioElement>(null);
   const currentSong = playlist[currentSongIndex];
 
+  // Handle play / pause
   const togglePlay = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
+    if (!audioRef.current) return;
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
     }
+    setIsPlaying(!isPlaying);
   };
 
+  // Handle next song
   const playNext = () => {
     setCurrentSongIndex((prev) => (prev + 1) % playlist.length);
     setIsPlaying(true);
   };
 
+  // Handle previous song
   const playPrevious = () => {
     setCurrentSongIndex((prev) => (prev - 1 + playlist.length) % playlist.length);
     setIsPlaying(true);
   };
 
+  // Handle volume slider
   const handleVolumeChange = (value: number[]) => {
     setVolume(value);
     if (audioRef.current) {
       audioRef.current.volume = value[0] / 100;
     }
+  };
+
+  // Handle progress bar movement
+  const handleProgressChange = (value: number[]) => {
+    if (audioRef.current && duration) {
+      const newTime = (value[0] / 100) * duration;
+      audioRef.current.currentTime = newTime;
+      setCurrentTime(newTime);
+      setProgress(value);
+    }
+  };
+
+  // Update progress as song plays
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const updateProgress = () => {
+      const current = audio.currentTime;
+      const total = audio.duration;
+      if (total > 0) {
+        setCurrentTime(current);
+        setProgress([(current / total) * 100]);
+      }
+    };
+
+    audio.addEventListener("timeupdate", updateProgress);
+    audio.addEventListener("loadedmetadata", () => {
+      setDuration(audio.duration);
+    });
+
+    return () => {
+      audio.removeEventListener("timeupdate", updateProgress);
+    };
+  }, [currentSongIndex]);
+
+  // Auto play when song changes
+  useEffect(() => {
+    if (audioRef.current && isPlaying) {
+      audioRef.current.play();
+    }
+  }, [currentSongIndex]);
+
+  // Helper to format time (mm:ss)
+  const formatTime = (time: number) => {
+    if (isNaN(time)) return "0:00";
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60)
+      .toString()
+      .padStart(2, "0");
+    return `${minutes}:${seconds}`;
   };
 
   return (
@@ -84,6 +141,23 @@ export const MusicPlayer = () => {
               <p className="font-poppins text-sm opacity-80">{song.artist}</p>
             </div>
           ))}
+        </div>
+
+        {/* Progress Bar */}
+        <div className="flex items-center gap-3 mb-6">
+          <span className="text-sm font-poppins text-muted-foreground w-10 text-right">
+            {formatTime(currentTime)}
+          </span>
+          <Slider
+            value={progress}
+            onValueChange={handleProgressChange}
+            max={100}
+            step={0.1}
+            className="flex-1"
+          />
+          <span className="text-sm font-poppins text-muted-foreground w-10">
+            {formatTime(duration)}
+          </span>
         </div>
 
         {/* Controls */}

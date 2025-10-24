@@ -17,32 +17,32 @@ export const MessageSection = () => {
         <div className="bg-card/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-2xl border border-border animate-scale-in">
           <div className="space-y-6 text-lg md:text-xl font-poppins text-muted-foreground leading-relaxed">
             <p className="text-center">
-              Dear Khushi, 💝
+              Dear Kuchi, 💝
             </p>
             
             <p>
-              On this special day, I want you to know how incredibly grateful I am to have you in my life. 
-              Your smile lights up every room, and your kindness touches everyone around you.
+              On this special day, I dont know if I have ever said this or not, You are very special to me.
+              Its not because of big things but because you were there in small moments. You made me smile when i didn't even want to.
+              You listened to me when I had no words. Your presence just made me feel better , I didn't even realise when you became my comfort zone.
             </p>
 
             <p>
-              Every moment we've shared together has been a treasure. From the silly inside jokes to the 
-              deep conversations, from the adventures to the quiet moments – each memory is precious to me.
-            </p>
-
-            <p>
-              You have this amazing ability to make ordinary days extraordinary. Your energy, your laughter, 
-              your genuine care for others – these are just a few of the countless reasons why you're so special.
+              Yrr I still miss those times when we used sit together during the first workshop, when our lives were peaceful and fun without any chaos.
+              But amid all this there is one thing that current khushi singh has stole from me, that's my best friend who used to have fun , who used to stay happy even for no reason,
+              and listen and laugh at all my stupidity. During garbostasav I did see a glimpse of that old khushi singh. I am ready to sacrifice anything just to see my old friend back.
+              koi toh chahiye jo ki mere gande jokes samjhe. Even though ab hum jyada baat nahi karte but I will always cherish those moments when we used to have fun,
+              jab hamlog shruti ko gaali dena sikhate the, that late night 6 hr talk while we were doing CAD Lab Manual, jab steven david ne mera project cancel kiya tha tab tune jaise mujhe shaant kiya wo aaj bhi sochke khush ho jaata hun.
+              I think ab jyda hi bakchodi kar chuka itna express karna aata nhi phir bhi itna likh diya.
             </p>
 
             <p>
               As you celebrate another year of being amazing, I hope this day brings you as much joy as you 
-              bring to everyone around you. May all your dreams come true, and may this year be filled with 
-              love, laughter, and unforgettable moments! 🎉
+              bring to everyone around you. At the end thanks for all the non stop bakchodi and being my first platonic friend.
+              Ab neeche memories wala section dekh usme asli mehnat lagi hai.
             </p>
 
             <p className="text-center font-vibes text-3xl text-primary mt-8">
-              Happy Birthday, Khushi! 🎂✨
+              Happy Birthday, Kuchi! 🎂✨
             </p>
 
             <p className="text-center text-base italic mt-4">

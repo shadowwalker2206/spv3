@@ -10,27 +10,27 @@ interface Memory {
 const memories: Memory[] = [
   {
     date: "First Meeting",
-    title: "The Day We Met",
-    description: "The beginning of an amazing friendship that changed everything!",
+    title: "The ABC Lab",
+    description: "When I first saw you when Ayushi mam made our group,first impression of u in my mind was its just a silent pufferfish.",
     location: "College",
   },
   {
-    date: "Summer 2023",
-    title: "Adventure Trip",
-    description: "That unforgettable trip where we made countless memories.",
-    location: "Mountains",
+    date: "The DLF Bakchodi",
+    title: "Abhinav's Birthday",
+    description: "Bhai jab tum abhinav ke birthday pe aa gayi, uss din tumhare haan bolne ki wajah se hi aaj hamari dosti hai.",
+    location: "DLF",
   },
   {
-    date: "Birthday 2023",
-    title: "Last Year's Celebration",
-    description: "Celebrating your special day with cake, laughter, and joy!",
-    location: "Home",
+    date: "Adventure day",
+    title: "EOD Adventure Park",
+    description: "Maza toh bahut aaya but tere ek baar girne se sabki fatt gyi thi...tameez se khelna seekh le u dumb pufferfish",
+    location: "EOD",
   },
   {
-    date: "Recent",
-    title: "Our Latest Adventure",
-    description: "More memories to cherish and moments to remember forever.",
-    location: "City",
+    date: "Pranjal's Birthday",
+    title: "Our Last bakchodi(as of now)",
+    description: "yaar tumhari wajah se mera birthday acche se celebrate ho gaya. Hope we can make more memories to cherish",
+    location: "DLF AND ANSAL PLAZA",
   },
 ];
 
