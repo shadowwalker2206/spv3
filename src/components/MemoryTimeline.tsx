@@ -17,7 +17,7 @@ const memories: Memory[] = [
   {
     date: "The DLF Bakchodi",
     title: "Abhinav's Birthday",
-    description: "Bhai jab tum abhinav ke birthday pe aa gayi, uss din tumhare haan bolne ki wajah se hi aaj hamari dosti hai.",
+    description: "You what all happened on that day , mujhe toh ghanta ummed nahi thi tum aaogi but glad you agreed on it",
     location: "DLF",
   },
   {

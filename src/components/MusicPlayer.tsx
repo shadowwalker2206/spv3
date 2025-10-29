@@ -11,9 +11,10 @@ interface Song {
 
 // ✅ Local songs (put inside /public folder)
 const playlist: Song[] = [
-  { title: "Sahiba", artist: "Artist 1", src: "/Sahiba.mp3" },
-  { title: "Tum Ho Toh", artist: "Artist 2", src: "/tum ho toh.mp3" },
-  { title: "Preet Re", artist: "Artist 3", src: "/preet re.mp3" },
+  { title: "Sahiba", artist: "Aditya Rikhari", src: "/Sahiba.mp3" },
+  { title: "Tum Ho Toh", artist: "Vishal Mishra", src: "/tum ho toh.mp3" },
+  { title: "Preet Re", artist: "Darshan Raval", src: "/preet re.mp3" },
+  { title: "We Don't talk Anymore", artist: "Charlie Puth", src: "/Wedonttalkanymore.mp3" },
 ];
 
 export const MusicPlayer = () => {
